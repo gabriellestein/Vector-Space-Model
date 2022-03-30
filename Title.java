@@ -1,0 +1,77 @@
+/**
+* Creates a term with the list of documents that contain the term
+* @author - Gabrielle Stein & Andrew Edwards
+*/
+package assg_03;
+
+import java.util.*;
+
+public class Title {
+	// Stemmed term to be indexed
+	private String title;
+	// List of documents that contain this term
+	private ArrayList<Document> documents;
+	/**
+	* Constructor for a term object
+	* @param title - The given term
+	*/
+	public Title(String title) {
+		this.title = title;
+		documents = new ArrayList<Document>();
+	}
+	
+	/**
+	* Retrieve the term
+	* @return term
+	*/
+	public String getTitle() {
+		return title;
+	}
+	
+	/**
+	* Retrieve the documents for this term
+	* @return List of documents
+	*/
+	public ArrayList<Document> getDocuments(){
+		return documents;
+	}
+	
+	/**
+	* Adds a document to this term's list of documents
+	* @param doc - The given document
+	*/
+	public void add(Document doc) {
+		documents.add(doc);
+	}
+
+	/**
+	* Checks if two terms are equal
+	* @param obj - other Term
+	* @return boolean stating whether two terms are the same
+	*/
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null)
+			return false;
+		else if(obj instanceof Term) {
+			Term temp = (Term)obj;
+			return this.term.equals(temp.term);
+		}
+		else
+			return false;
+	}
+	
+	/**
+	* Makes sure each term has a unique has code that carries over to other
+	* terms with the same given string
+	* @return hashcode
+	*/
+	@Override
+	  public int hashCode() {
+	    final int prime = 31;
+	    int result = 1;
+	    result = prime * result + term.hashCode();  
+	    return result;
+	}
+	
+}
